@@ -9,5 +9,11 @@ export 'src/core/buffer/cursor.dart';
 // Core - Terminal
 export 'src/core/terminal/terminal.dart';
 
+// Core - Parser
+export 'src/core/parser/escape_sequence_parser.dart';
+export 'src/core/parser/ansi_command.dart';
+export 'src/core/parser/parser_state.dart';
+
 // Utils
 export 'src/utils/constants.dart';
+export 'src/utils/ansi_colors.dart';
