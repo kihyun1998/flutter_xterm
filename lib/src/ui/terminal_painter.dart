@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import '../core/buffer/cursor.dart';
 import '../core/terminal/terminal.dart';
 import 'terminal_theme.dart';
 import 'text_style_cache.dart';
@@ -71,7 +73,11 @@ class TerminalPainter extends CustomPainter {
 
   /// Draws the background of a single cell.
   void _drawCellBackground(
-      Canvas canvas, Offset offset, Size cellSize, Color color) {
+    Canvas canvas,
+    Offset offset,
+    Size cellSize,
+    Color color,
+  ) {
     final paint = Paint()
       ..color = color
       ..style = PaintingStyle.fill;
@@ -118,12 +124,7 @@ class TerminalPainter extends CustomPainter {
       case CursorStyle.bar:
         // Bar cursor: draw 2px line at left
         canvas.drawRect(
-          Rect.fromLTWH(
-            offset.dx,
-            offset.dy,
-            2,
-            cellSize.height,
-          ),
+          Rect.fromLTWH(offset.dx, offset.dy, 2, cellSize.height),
           paint,
         );
         break;
