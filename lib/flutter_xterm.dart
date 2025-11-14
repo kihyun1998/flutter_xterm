@@ -1,4 +1,5 @@
 /// Flutter XTerm - A terminal emulator for Flutter.
+library flutter_xterm;
 
 // Core - Buffer
 export 'src/core/buffer/terminal_cell.dart';

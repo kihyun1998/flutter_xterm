@@ -1,22 +1,13 @@
 import 'package:flutter/material.dart';
-
-/// Cursor style for the terminal.
-enum CursorStyle {
-  /// Block cursor (█)
-  block,
-
-  /// Underline cursor (_)
-  underline,
-
-  /// Bar cursor (|)
-  bar,
-}
+import '../core/buffer/cursor.dart';
 
 /// Theme configuration for terminal rendering.
 ///
 /// This class defines all styling properties for terminal rendering including
 /// fonts, colors, cursor appearance, and layout.
-@immutable
+///
+/// Note: This class is not marked as @immutable because it uses internal
+/// caching for the cellSize property to improve performance.
 class TerminalTheme {
   // === Font Settings ===
 
@@ -63,7 +54,7 @@ class TerminalTheme {
   Size? _cachedCellSize;
 
   /// Creates a terminal theme with the specified properties.
-  const TerminalTheme({
+  TerminalTheme({
     this.fontFamily = 'monospace',
     this.fontSize = 14.0,
     this.defaultForegroundColor = Colors.white,
@@ -78,12 +69,12 @@ class TerminalTheme {
 
   /// Creates a dark theme (default).
   factory TerminalTheme.dark() {
-    return const TerminalTheme();
+    return TerminalTheme();
   }
 
   /// Creates a light theme.
   factory TerminalTheme.light() {
-    return const TerminalTheme(
+    return TerminalTheme(
       defaultForegroundColor: Colors.black,
       defaultBackgroundColor: Colors.white,
       cursorColor: Colors.black,
