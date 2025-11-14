@@ -23,7 +23,7 @@ class Terminal {
   TerminalCell _currentStyle = TerminalCell.empty();
 
   /// The main screen buffer.
-  late TerminalBuffer _mainBuffer;
+  late final TerminalBuffer _mainBuffer;
 
   /// The alternate screen buffer.
   TerminalBuffer? _alternateBuffer;
@@ -51,7 +51,9 @@ class Terminal {
   bool _newLineMode = false;
 
   /// Default colors (can be set by OSC sequences).
+  // ignore: unused_field
   Color? _defaultForegroundColor;
+  // ignore: unused_field
   Color? _defaultBackgroundColor;
 
   /// Custom color palette (can be modified by OSC sequences).

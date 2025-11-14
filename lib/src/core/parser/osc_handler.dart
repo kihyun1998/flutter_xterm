@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import '../terminal/terminal.dart';
 import 'ansi_command.dart';
 
@@ -86,8 +87,9 @@ class OscHandler {
     String data, {
     required bool isForeground,
   }) {
-    final color = _parseColorSpec(data);
-    if (color != null) {
+    final colorValue = _parseColorSpec(data);
+    if (colorValue != null) {
+      final color = Color(colorValue);
       if (isForeground) {
         terminal.setDefaultForegroundColor(color);
       } else {

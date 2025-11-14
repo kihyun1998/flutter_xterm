@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_xterm/src/core/buffer/cursor.dart';
 import 'package:flutter_xterm/src/core/buffer/terminal_buffer.dart';
