@@ -16,3 +16,7 @@ export 'src/core/parser/parser_state.dart';
 // Utils
 export 'src/utils/constants.dart';
 export 'src/utils/ansi_colors.dart';
+
+// UI - Terminal View
+export 'src/ui/terminal_view.dart';
+export 'src/ui/terminal_theme.dart';

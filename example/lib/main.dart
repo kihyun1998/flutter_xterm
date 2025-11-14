@@ -131,7 +131,7 @@ class _TerminalDemoState extends State<TerminalDemo> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Flutter XTerm - Phase 2'),
+        title: const Text('Flutter XTerm - Phase 3'),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
@@ -139,17 +139,19 @@ class _TerminalDemoState extends State<TerminalDemo> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              'Terminal Buffer Content:',
+              'Terminal View:',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             Container(
-              padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: Colors.black,
+                border: Border.all(color: Colors.grey),
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: _buildTerminalView(),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: _buildTerminalView(),
+              ),
             ),
             const SizedBox(height: 16),
             const Text(
@@ -241,42 +243,9 @@ class _TerminalDemoState extends State<TerminalDemo> {
   }
 
   Widget _buildTerminalView() {
-    final lines = <Widget>[];
-
-    for (int y = 0; y < terminal.rows; y++) {
-      final rowWidgets = <InlineSpan>[];
-
-      for (int x = 0; x < terminal.cols; x++) {
-        final cell = terminal.buffer.getCell(x, y);
-
-        rowWidgets.add(
-          TextSpan(
-            text: cell.char,
-            style: TextStyle(
-              color: cell.foregroundColor ?? Colors.white,
-              backgroundColor: cell.backgroundColor,
-              fontWeight: cell.isBold ? FontWeight.bold : FontWeight.normal,
-              fontStyle: cell.isItalic ? FontStyle.italic : FontStyle.normal,
-              decoration: cell.isUnderline
-                  ? TextDecoration.underline
-                  : TextDecoration.none,
-              fontFamily: 'monospace',
-              fontSize: 14,
-            ),
-          ),
-        );
-      }
-
-      lines.add(
-        RichText(
-          text: TextSpan(children: rowWidgets),
-        ),
-      );
-    }
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: lines,
+    return TerminalView(
+      terminal: terminal,
+      theme: TerminalTheme.dark(),
     );
   }
 }

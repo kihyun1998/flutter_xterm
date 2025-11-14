@@ -79,29 +79,29 @@
 ## Phase 3: UI 렌더링
 
 ### 3.1 기본 렌더링
-- [ ] `TerminalPainter` (CustomPainter) 구현
+- [x] `TerminalPainter` (CustomPainter) 구현
   - 셀별 텍스트 렌더링
   - 배경색 적용
   - 커서 렌더링 (깜빡임)
-- [ ] `TerminalView` 위젯 구현
+- [x] `TerminalView` 위젯 구현
   - CustomPaint 래핑
   - 크기 계산 (폰트 크기 기반)
-- [ ] 폰트 설정
+- [x] 폰트 설정
   - 고정폭 폰트 (monospace)
   - 폰트 크기 조정 가능
   - 셀 크기 계산 (width, height)
 
 ### 3.2 스타일 적용
-- [ ] 텍스트 스타일 렌더링
+- [x] 텍스트 스타일 렌더링
   - bold, italic, underline 적용
-- [ ] 색상 팔레트
+- [x] 색상 팔레트
   - 기본 16색 정의
   - 256색 팔레트
   - RGB 색상 지원
 
 ### 3.3 성능 최적화
-- [ ] 더티 영역만 다시 그리기
-- [ ] 텍스트 캐싱 (TextPainter 재사용)
+- [ ] 더티 영역만 다시 그리기 (향후 개선)
+- [x] 텍스트 캐싱 (TextPainter 재사용)
 
 ### ✅ Phase 3 완료 후 기대 결과
 - **화면에 터미널 표시**: Flutter 앱에서 실제 터미널처럼 보이는 위젯 렌더링
