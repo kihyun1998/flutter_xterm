@@ -80,8 +80,7 @@ class TextStyleCache {
       fontStyle: cell.isItalic ? FontStyle.italic : FontStyle.normal,
       decoration:
           cell.isUnderline ? TextDecoration.underline : TextDecoration.none,
-      height: 1.0, // Use tight height for monospace alignment
-      letterSpacing: 0.0, // Ensure consistent character spacing
+      // Don't specify height or letterSpacing - use defaults for natural rendering
     );
   }
 

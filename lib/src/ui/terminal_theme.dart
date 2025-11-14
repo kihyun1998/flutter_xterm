@@ -122,22 +122,23 @@ class TerminalTheme {
     }
 
     // Measure a sample character to determine cell size
+    // Use the same TextStyle as actual rendering for consistency
     final textPainter = TextPainter(
       text: TextSpan(
         text: 'W',
         style: TextStyle(
           fontFamily: fontFamily,
           fontSize: fontSize,
-          height: 1.0, // Use tight height for accurate measurement
+          // Don't specify height - use default for natural rendering
         ),
       ),
       textDirection: TextDirection.ltr,
     )..layout();
 
-    // Apply lineHeight multiplier to vertical spacing
+    // Cell size is the natural text size (lineHeight is currently not used)
     _cachedCellSize = Size(
       textPainter.width,
-      textPainter.height * lineHeight,
+      textPainter.height,
     );
 
     return _cachedCellSize!;
