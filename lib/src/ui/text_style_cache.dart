@@ -66,7 +66,6 @@ class TextStyleCache {
       cell.isUnderline,
       theme.fontFamily,
       theme.fontSize,
-      theme.lineHeight,
     );
   }
 
@@ -81,7 +80,8 @@ class TextStyleCache {
       fontStyle: cell.isItalic ? FontStyle.italic : FontStyle.normal,
       decoration:
           cell.isUnderline ? TextDecoration.underline : TextDecoration.none,
-      height: theme.lineHeight,
+      height: 1.0, // Use tight height for monospace alignment
+      letterSpacing: 0.0, // Ensure consistent character spacing
     );
   }
 

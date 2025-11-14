@@ -39,7 +39,9 @@ class TerminalTheme {
 
   // === Layout Settings ===
 
-  /// Line height multiplier (1.0 = tight, 1.2 = comfortable).
+  /// Line height multiplier for vertical cell spacing.
+  /// This is applied to the base cell height to add vertical spacing.
+  /// 1.0 = no extra spacing, 1.2 = 20% extra spacing between lines.
   final double lineHeight;
 
   /// Padding around the terminal content.
@@ -126,15 +128,16 @@ class TerminalTheme {
         style: TextStyle(
           fontFamily: fontFamily,
           fontSize: fontSize,
-          height: lineHeight,
+          height: 1.0, // Use tight height for accurate measurement
         ),
       ),
       textDirection: TextDirection.ltr,
     )..layout();
 
+    // Apply lineHeight multiplier to vertical spacing
     _cachedCellSize = Size(
       textPainter.width,
-      textPainter.height,
+      textPainter.height * lineHeight,
     );
 
     return _cachedCellSize!;
